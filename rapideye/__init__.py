@@ -24,14 +24,17 @@ def initiate():
 
 	blank_hist = cv2.calcHist([reference],[0],None,[256],[0,256])
 
+	height = None
+
 	for file in os.listdir(args["dataset"]):
 		if file.endswith(".png"):
 			full_path = args["dataset"] + file
 			img = cv2.imread(full_path,cv2.IMREAD_COLOR)
 
+			height, width, channels = img.shape
 			cv2.imshow("Similar Image", img)
 			cv2.moveWindow("Similar Image",600,100)
-			key = cv2.waitKey(1) & 0xFF
+			key = cv2.waitKey(50) & 0xFF
 
 			img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 			hist_hue = cv2.calcHist([img],[0],None,[256],[0,256])
@@ -61,9 +64,20 @@ def initiate():
 
 			chi_diff = (abs(diff_hue) + abs(diff_saturation) + abs(diff_value)) / 3
 
-			print chi_diff
-
-			if chi_diff < 1000000.0 and correlation_diff > 0.6:
+			if chi_diff < 600000.0 and correlation_diff > 0.6:
 				print "Found with combination of CORRELATION & CHI-SQUARE"
+				time.sleep(3)
+				continue
+
+			# Intersection
+
+			diff_hue = cv2.compareHist(reference_hist_hue,hist_hue,cv2.cv.CV_COMP_INTERSECT)
+			diff_saturation = cv2.compareHist(reference_hist_saturation,hist_saturation,cv2.cv.CV_COMP_INTERSECT)
+			diff_value = cv2.compareHist(reference_hist_value,hist_value,cv2.cv.CV_COMP_INTERSECT)
+
+			inter_diff = (abs(diff_hue) + abs(diff_saturation) + abs(diff_value)) / 3
+
+			if chi_diff < 2000000.0 and correlation_diff > 0.5 and inter_diff < 90000.0:
+				print "Found with combination of CORRELATION & CHI-SQUARE & INTERSECTION"
 				time.sleep(3)
 				continue
