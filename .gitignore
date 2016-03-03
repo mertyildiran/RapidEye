@@ -8,6 +8,5 @@
 
 # Ignore directories related with packaging #
 ###################
-rapideye.egg-info/
 dist/
 build/
