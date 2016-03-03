@@ -1,6 +1,6 @@
 # Ignore Python compiled code (byte code) #
 ###################
-*.pyc
+
 
 # Ignore Image Files #
 ###################
