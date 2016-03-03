@@ -1,0 +1,9 @@
+# Ignore Image Files #
+###################
+*.png
+
+# Ignore directories related with packaging #
+###################
+cerebrum.egg-info/
+dist/
+build/
