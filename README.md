@@ -1,6 +1,32 @@
 # RapidEye
 
-An Image Search Toolkit based on OpenCV.
+An Image Search Toolkit based on OpenCV's histogram comparison methods:
+
+ - **cv2.cv.CV_COMP_CORREL**: Computes the correlation between the two histograms.
+ - **cv2.cv.CV_COMP_CHISQR**: Applies the Chi-Squared distance to the histograms.
+ - **cv2.cv.CV_COMP_INTERSECT**: Calculates the intersection between two histograms.
+ - **cv2.cv.CV_COMP_BHATTACHARYYA**: Bhattacharyya / Hellinger distance, used to measure the “overlap” between the two histograms.
 
 ### Version
-0.1.2
+0.1.3
+
+### Installation
+
+```Shell
+sudo apt-get install python-opencv
+sudo pip install rapideye
+```
+
+### Usage
+
+Train with files:
+
+```Shell
+rapideye --dataset PATH_TO_DATASET_DIRECTORY --query PATH_TO_REFERENCE_IMAGE
+```
+
+Example:
+
+```Shell
+rapideye --dataset dataset/ --query queries/103100.png
+```
