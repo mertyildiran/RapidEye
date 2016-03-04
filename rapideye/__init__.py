@@ -15,7 +15,7 @@ def initiate():
 	blank = numpy.empty_like(reference)
 
 	cv2.imshow("Query Image", reference)
-	cv2.moveWindow("Query Image",50,100)
+	cv2.moveWindow("Query Image",450,100)
 
 	reference = cv2.cvtColor(reference, cv2.COLOR_BGR2HSV)
 	reference_hist_hue = cv2.calcHist([reference],[0],None,[256],[0,256])
@@ -33,7 +33,7 @@ def initiate():
 
 			height, width, channels = img.shape
 			cv2.imshow("Similar Image", img)
-			cv2.moveWindow("Similar Image",600,100)
+			cv2.moveWindow("Similar Image",1000,100)
 			key = cv2.waitKey(50) & 0xFF
 
 			img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -79,5 +79,18 @@ def initiate():
 
 			if chi_diff < 2000000.0 and correlation_diff > 0.5 and inter_diff < 90000.0:
 				print "Found with combination of CORRELATION & CHI-SQUARE & INTERSECTION"
+				time.sleep(3)
+				continue
+
+			# Bhattacharyya distance / Hellinger distance
+
+			diff_hue = cv2.compareHist(reference_hist_hue,hist_hue,cv2.cv.CV_COMP_BHATTACHARYYA)
+			diff_saturation = cv2.compareHist(reference_hist_saturation,hist_saturation,cv2.cv.CV_COMP_BHATTACHARYYA)
+			diff_value = cv2.compareHist(reference_hist_value,hist_value,cv2.cv.CV_COMP_BHATTACHARYYA)
+
+			hellinger_diff = (abs(diff_hue) + abs(diff_saturation) + abs(diff_value)) / 3
+
+			if chi_diff < 2500000.0 and correlation_diff > 0.4 and hellinger_diff > 0.5:
+				print "Found with combination of CORRELATION & CHI-SQUARE & HELLINGER DISTANCE"
 				time.sleep(3)
 				continue
