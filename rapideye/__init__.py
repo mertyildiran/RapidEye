@@ -2,7 +2,6 @@ import argparse
 import os
 import cv2
 import time
-import numpy
 
 def initiate():
 	ap = argparse.ArgumentParser()
@@ -11,8 +10,6 @@ def initiate():
 	args = vars(ap.parse_args())
 
 	reference = cv2.imread(args["query"],cv2.IMREAD_COLOR)
-
-	blank = numpy.empty_like(reference)
 
 	cv2.imshow("Query Image", reference)
 	cv2.moveWindow("Query Image",450,100)

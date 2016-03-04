@@ -8,7 +8,7 @@ An Image Search Toolkit based on OpenCV's histogram comparison methods:
  - **cv2.cv.CV_COMP_BHATTACHARYYA**: Bhattacharyya / Hellinger distance, used to measure the “overlap” between the two histograms.
 
 ### Version
-0.1.3
+0.1.4
 
 ### Installation
 
@@ -18,8 +18,6 @@ sudo pip install rapideye
 ```
 
 ### Usage
-
-Train with files:
 
 ```Shell
 rapideye --dataset PATH_TO_DATASET_DIRECTORY --query PATH_TO_REFERENCE_IMAGE
