@@ -1,6 +1,8 @@
 # RapidEye
 
-![RapidEye](https://raw.githubusercontent.com/mertyildiran/RapidEye/master/rapideye.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mertyildiran/RapidEye/master/rapideye.png" alt="RapidEye"/>
+</p>
 
 An Image Search Toolkit based on OpenCV's histogram comparison methods:
 
@@ -10,7 +12,7 @@ An Image Search Toolkit based on OpenCV's histogram comparison methods:
  - **cv2.cv.CV_COMP_BHATTACHARYYA**: Bhattacharyya / Hellinger distance, used to measure the “overlap” between the two histograms.
 
 ### Version
-0.1.5
+0.1.6
 
 ### Installation
 
