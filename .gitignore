@@ -5,6 +5,7 @@
 # Ignore Image Files #
 ###################
 *.png
+!rapideye.png
 
 # Ignore directories related with packaging #
 ###################

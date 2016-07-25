@@ -1,5 +1,7 @@
 # RapidEye
 
+![RapidEye](https://raw.githubusercontent.com/mertyildiran/RapidEye/master/rapideye.png)
+
 An Image Search Toolkit based on OpenCV's histogram comparison methods:
 
  - **cv2.cv.CV_COMP_CORREL**: Computes the correlation between the two histograms.
@@ -8,7 +10,7 @@ An Image Search Toolkit based on OpenCV's histogram comparison methods:
  - **cv2.cv.CV_COMP_BHATTACHARYYA**: Bhattacharyya / Hellinger distance, used to measure the “overlap” between the two histograms.
 
 ### Version
-0.1.4
+0.1.5
 
 ### Installation
 
